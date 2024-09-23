@@ -1,13 +1,80 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700;800;900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    background-color: aliceblue;
+    color: #101828;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.wrapper {
+    width: 1280px;
+    margin: 40px auto;
+}
+
+header .logo {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+header ul.nav { /*float = позиционирования списка справа, list-style: none; = убрать точки у ненумер-го списка */
+    float: right;
+    list-style: none;
+
+}
+
+header ul.nav li { 
+    display: inline; /*в одну строку*/
+    margin-left: 28px;
+    cursor: pointer;
+    transition: opacity 300ms ease; /*плавный переход для opacity*/
+}
+
+header ul.nav li:hover {
+    opacity: 60%;
+}
+
+header .presentation {
+    margin: 40px 0;
+    background: url('./img/presentation.jpg') no-repeat;
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center center;
+    background-blend-mode: multiply;
+    background-color: #23242763;
+    position: relative;
+}
+
+header .presentation::after {
+    content: 'Товары для вашего дома';
+    position: absolute;
+    left: 80px;
+    top: 120px;
+    font-size: 48px;
+    font-weight: 800;
+    color: aliceblue;
+    text-shadow: rgba(39, 39, 39, 0.281) 1px 2px 8px;
+}
+
+header .presentation::before {
+    content: 'По низким ценам';
+    position: absolute;
+    left: 80px;
+    top: 200px;
+    font-size: 24px;
+    font-weight: 400;
+    color: rgba(240, 248, 255, 0.856);
+    text-shadow: rgba(39, 39, 39, 0.281) 1px 2px 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 40px;
 }
