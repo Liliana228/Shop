@@ -50,15 +50,57 @@ header .shop-cart {
     position: absolute;
     top: 40px;
     right: 0px;
+    padding: 16px;
+    padding-bottom: 0;
+    height: auto;
 
     width: 450px;
     border-radius: 8px;
-    min-height: 100px;
+    /* min-height: 100px; */
     background-color: #ffffff;
     box-shadow: -1px 0px 35px 0px rgba(0,0,0,0.51);
 -webkit-box-shadow: -1px 0px 35px 0px rgba(0,0,0,0.51);
 -moz-box-shadow: -1px 0px 35px 0px rgba(0,0,0,0.51);
     z-index: 1000; /*чтобы выдвинуть объект на первый план*/
+}
+
+header .shop-cart .empty h2{
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 16px;
+    text-align: center;
+    color: #484A50;
+}
+
+header .shop-cart .item {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 16px;
+    float: left;
+}
+
+header .shop-cart .item img {
+    float: left;
+    width: 80px;
+    margin-right: 20px;
+}
+
+header .shop-cart .item h2 {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+header .shop-cart .item h4 {
+    color: #101828;
+    font-weight: 600;
+    font-size: 20px;
+    /* float: right; */
+}
+
+header .shop-cart .item h2 {
+    color: #484A50;
+    font-weight: 300;
+    font-size: 16px;
 }
 
 header .logo {

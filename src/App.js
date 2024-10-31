@@ -57,8 +57,9 @@ class App extends React.Component {
   }
   render () {
   return ( //items={this.state.items} = вместе с компонентом Items передаем еще и свойства
+    // orders={this.state.orders} = свойство {значение}
     <div className="wrapper">
-      <Header />
+      <Header orders={this.state.orders}/>
       <Items items={this.state.items} onAdd={this.addToOrder}/> 
       <Footer />
     </div>
@@ -66,9 +67,13 @@ class App extends React.Component {
   }
 
   addToOrder(item) {
-    this.setState({orders: [...this.state.orders, item]}, () => {
-      console.log(this.state.orders)
+    let isInArray = false //создали переменную isInArray
+    this.state.orders.forEach(el => {
+      if(el.id === item.id)
+        isInArray = true
     })
+    if(!isInArray)
+    this.setState({orders: [...this.state.orders, item]} )
   }
 }
 

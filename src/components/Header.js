@@ -2,6 +2,21 @@ import React, { useState } from 'react'
 import { FiShoppingCart } from "react-icons/fi";
 import Order from './Order';
 
+const showOrders = (props) => { /*мы задаем собственные методы */
+  return (<div>
+    {props.orders.map(el => (
+                  <Order key={el.id} item={el} />
+                ))}
+  </div>)
+}
+
+const showNothing = () => {
+  return( <div className='empty'>
+    <h2>Товары пока не добавлены</h2>
+  </div>
+  )
+}
+
 export default function Header(props) {
 //cartOpen = состояние, setCartOpen = функция
   let [cartOpen, setCartOpen] = useState(false)  //false = значение по умолчанию
@@ -26,15 +41,14 @@ export default function Header(props) {
 
             {cartOpen && (
               <div className='shop-cart'>
-                {props.orders.map((el) => (
-                  <Order key={el.id} item={el} />
-                ))}
+                {props.orders.length > 0 ? showOrders(props) : showNothing()} 
               </div>
             )}
         </div> 
-        <div className='presentation'></div>
+        <div className='presentation'></div> 
     </header>
-    
+    /* ? если условие положительное, : = то
+                showNothing & showOrders = мои собственные методы */
   )
 }
 
