@@ -103,6 +103,30 @@ header .shop-cart .item h2 {
     font-size: 16px;
 }
 
+header .shop-cart .item .delete-icon {
+    float: right;
+    color: #d10d4e;
+    position: relative; /*чтобы мы могли сдвинуть картинку немного выше*/
+    top: -24px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 300ms ease;
+    cursor: pointer;
+}
+
+header .shop-cart .item .delete-icon:hover {
+    background-color: #eaedf3;
+    
+}
+
+header .shop-cart .summa {
+    float: left;
+    width: 100%;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
 header .logo {
     font-weight: 700;
     font-size: 20px;
@@ -159,6 +183,85 @@ header .presentation::before {
     text-shadow: rgba(39, 39, 39, 0.281) 1px 2px 8px;
 }
 
+.categories div {
+    display: inline-block;
+    background-color: #fff;
+    padding: 4px 12px;
+    outline-style: solid;
+    outline-color: #484A50;
+    outline-width: 1px;
+    border-radius: 16px;
+    margin-right: 8px;
+    margin-bottom: 24px;
+    cursor: pointer;
+    transition: background-color 300ms ease;
+}
+
+.categories div:hover {
+    background-color: #dadada;
+}
+
+/* .categories div:active {
+    background-color: #000000;
+    color: #fff;
+    outline-style: none;
+} */
+
+.full-item {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #2d2d2e50;
+    z-index: 9999;
+    overflow: auto;
+}
+
+.full-item .modal {
+    position: relative;
+    width: 600px;
+    height: auto;
+    margin: 10% auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    opacity: 0;
+  animation: ani 0.3s forwards;
+}
+
+@keyframes ani {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+.full-item .modal img {
+    width: 100%;
+    height: 400px;
+    object-fit: contain; /*картинки адаптируются под размер*/
+    border-radius: 10px 10px 0 0;
+    transition: transform 300ms ease;
+    cursor: pointer;
+}
+
+.full-item .modal .x {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    position: absolute; /*чтобы сделать абсолютную позицию относительно карточки, нужно в КАРТОЧКЕ (item) прописать position: relative*/
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    align-items: center; /*выравнивание по вертикали*/
+    justify-content: center; /*выравнивание по горизонтали*/
+}
+
+.full-item .modal .x:hover {
+    background: #0000000e;
+}
+
 main {
     display: flex; /*расположение всех блоков*/
     width: 100%; /*относительно wrapper*/
@@ -189,34 +292,44 @@ main .item:hover img {
     transform: scale(1.05);
 }
 
-main .item img {
+main .item img 
+/* .full-item img { */
+{
     width: 100%;
     height: 200px;
     object-fit: contain; /*картинки адаптируются под размер*/
     border-radius: 10px 10px 0 0;
     transition: transform 300ms ease;
+    cursor: pointer;
 }
 
-main .item img:hover {
-    /* transform: scale(1.05); */
+main .item img:hover,
+.full-item img:hover {
+    transform: scale(1.05);
 }
 
-main h2, main p {
+main h2,
+.full-item h2, 
+main p, 
+.full-item p {
     margin: 4px 0;
     color: #484A50;
 }
 
-main p {
+main p,
+.full-item p {
     color: #9a9ea5;
     /* width: 80%; */
 }
 
-main h4 {
+main h4,
+.full-item h4 {
     font-size: 20px;
     padding: 12px 0;
 }
 
-main .add-to-cart {
+main .add-to-cart,
+.full-item .add-to-cart {
     position: absolute; /*чтобы сделать абсолютную позицию относительно карточки, нужно в КАРТОЧКЕ (item) прописать position: relative*/
     right: 20px;
     bottom: 20px;
@@ -232,7 +345,8 @@ main .add-to-cart {
     box-shadow: rgba(39, 39, 39, 0.247) 1px 2px 5px;
 }
 
-main .add-to-cart:hover {
+main .add-to-cart:hover,
+.full-item .add-to-cart:hover {
     box-shadow: rgba(39, 39, 39, 0.164) 1px 2px 9px;
     /* transform:  translateY(-4px);  - перемещение вверх на 4 рх*/
 }

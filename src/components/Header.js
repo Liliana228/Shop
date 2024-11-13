@@ -3,12 +3,16 @@ import { FiShoppingCart } from "react-icons/fi";
 import Order from './Order';
 
 const showOrders = (props) => { /*мы задаем собственные методы */
+  let summa = 0
+  props.orders.forEach(el => summa += Number.parseFloat(el.price)) //Чтобы строки прайса превратить в цифры, обращаемся к классу Number и методу parseFloat
   return (<div>
     {props.orders.map(el => (
-                  <Order key={el.id} item={el} />
+                  <Order onDelete={props.onDelete} key={el.id} item={el} />
                 ))}
+        <p className='summa'>Сумма к оплате: {new Intl.NumberFormat().format(summa)}$</p> 
   </div>)
 }
+//Intl.NumberFormat().format(summa) = для того, чтобы округлить до 2х знаков после запятой
 
 const showNothing = () => {
   return( <div className='empty'>

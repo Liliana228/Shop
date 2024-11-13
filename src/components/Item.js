@@ -4,7 +4,7 @@ export class Item extends Component {
   render() {
     return ( //item я вывожу в компоненте Items item={el}, где el = запись из массива
       <div className='item'> 
-          <img src={"./img/" + this.props.item.img} />
+          <img src={"./img/" + this.props.item.img} onClick={() => this.props.onShowItem(this.props.item)} />
           <h2>{this.props.item.title}</h2>
           <p>{this.props.item.desc}</p>
           <h4>{this.props.item.price}$</h4>
