@@ -355,3 +355,46 @@ footer {
     text-align: center;
     padding: 20px 40px;
 }
+
+header .shop-cart .shop-cart-close {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 2px;
+    transition: background-color 300ms ease;
+}
+
+header .shop-cart .shop-cart-close:hover {
+    background: #0000000e;
+}
+
+header .shop-cart .item .count-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+header .shop-cart .item .count-button {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    color: #d10d4e;
+    transition: background-color 300ms ease;
+}
+
+header .shop-cart .item .count-button:hover {
+    background-color: #eaedf3;
+}
+
+header .shop-cart .item .count {
+    font-weight: 600;
+    color: #484A50;
+}

@@ -63,12 +63,17 @@ class App extends React.Component {
     this.deleteOrder = this.deleteOrder.bind(this)
     this.chooseCategory = this.chooseCategory.bind(this)
     this.onShowItem = this.onShowItem.bind(this)
+    this.updateOrderCount = this.updateOrderCount.bind(this)
   }
   render () {
   return ( //items={this.state.items} = вместе с компонентом Items передаем еще и свойства
     // orders={this.state.orders} = свойство {значение}
     <div className="wrapper">
-      <Header orders={this.state.orders} onDelete={this.deleteOrder} />
+      <Header 
+      orders={this.state.orders} 
+      onDelete={this.deleteOrder}
+      onUpdateCount={this.updateOrderCount} 
+      />
       <Categories chooseCategory={this.chooseCategory} />
       <Items 
       onShowItem={this.onShowItem} 
@@ -100,13 +105,38 @@ class App extends React.Component {
   }
 
   addToOrder(item) {
-    let isInArray = false //создали переменную isInArray
-    this.state.orders.forEach(el => {
-      if(el.id === item.id)
-        isInArray = true
-    })
-    if(!isInArray) //"!" = isInArray = true
-    this.setState({orders: [...this.state.orders, item]} )
+    const existingItem = this.state.orders.find(el => el.id === item.id);
+    
+    if (existingItem) {
+      // Если товар уже есть, увеличиваем его количество
+      this.setState({
+        orders: this.state.orders.map(el => 
+          el.id === item.id 
+            ? {...el, count: (el.count || 1) + 1}
+            : el
+        )
+      });
+    } else {
+      // Если товара нет, добавляем его с count: 1
+      this.setState({
+        orders: [...this.state.orders, {...item, count: 1}]
+      });
+    }
+  }
+
+  updateOrderCount(id, change) {
+    this.setState(prevState => {
+      const updatedOrders = prevState.orders.map(el => {
+        if (el.id === id) {
+          const newCount = (el.count || 1) + change;
+          // Если количество стало 0 или меньше, возвращаем null
+          return newCount <= 0 ? null : {...el, count: newCount};
+        }
+        return el;
+      }).filter(Boolean); // Удаляем null элементы из массива
+
+      return { orders: updatedOrders };
+    });
   }
 }
 
